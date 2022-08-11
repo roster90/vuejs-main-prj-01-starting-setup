@@ -7,7 +7,7 @@
       <div class="controls">
         <!-- <button>Refresh</button> -->
         <base-button>Refresh</base-button>
-        <base-button link to="/register">Register Coach</base-button>
+        <base-button link to="/register" v-if="!isCoach">Register Coach</base-button>
 
         <!-- <router-link to="/register">Register Coach</router-link> -->
       </div>
@@ -51,7 +51,6 @@ export default {
   computed: {
     filteredCoaches() {
       const coaches = this.$store.getters['coaches/coaches'];
-
       return coaches.filter((coach) => {
         if (this.activeFiter.frontend && coach.areas.includes('frontend')) {
           return true;
@@ -67,6 +66,9 @@ export default {
     },
     hasCoaches() {
       return this.$store.getters['coaches/hasCoaches'];
+    },
+    isCoach() {
+      return this.$store.getters['coaches/isCoach'];
     },
   },
   methods: {

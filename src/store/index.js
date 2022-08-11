@@ -3,7 +3,18 @@ import coachesModules from './modules/coaches/index.js'
 
 const store = createStore({
     modules:{
-       coaches:coachesModules}
+       coaches:coachesModules
+    },
+    state(){
+        return{
+            userId: '3'
+        }
+    },
+    getters:{
+        userId(state){
+            return state.userId;
+        }
+    }
 })
 
 
